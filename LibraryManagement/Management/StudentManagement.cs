@@ -26,7 +26,7 @@ namespace LibraryManagement.Management
                 }
             }
         }
-        public Student GetBookCategoryByID(string Id)
+        public Student GetStudentByID(string Id)
         {
             Student student = null;
             try
@@ -40,7 +40,7 @@ namespace LibraryManagement.Management
             }
             return student;
         }
-        public IEnumerable<Student> GetBookCategoryList()
+        public IEnumerable<Student> GetStudentList()
         {
             List<Student> students;
             try

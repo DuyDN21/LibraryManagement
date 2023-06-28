@@ -26,7 +26,7 @@ namespace LibraryManagement.Management
                 }
             }
         }
-        public Publisher GetBookCategoryByID(string publisherId)
+        public Publisher GetPublisherByID(string publisherId)
         {
             Publisher publisher = null;
             try
@@ -40,7 +40,7 @@ namespace LibraryManagement.Management
             }
             return publisher;
         }
-        public IEnumerable<Publisher> GetBookCategoryList()
+        public IEnumerable<Publisher> GetPublisherList()
         {
             List<Publisher> publishers;
             try
