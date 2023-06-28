@@ -10,5 +10,6 @@ namespace LibraryManagement.IRepository
     public interface IAdminRepository
     {
         Admin GetAdminByID(int adminId);
+        bool AdminLogin(int adminId, string pass);
     }
 }

@@ -40,5 +40,21 @@ namespace LibraryManagement.Management
             }
             return admin;
         }
+
+        public bool AdminLogin(int adminId, String pass)
+        {
+            Admin admin = null;
+            try
+            {
+                var myLibrary = new LibraryManagementContext();
+                admin = myLibrary.Admins.SingleOrDefault(admin => admin.Aid == adminId && admin.Password == pass);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return admin == null ? false: true;
+        }
     }
 }

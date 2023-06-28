@@ -11,8 +11,8 @@ namespace LibraryManagement.Repository
 {
     internal class StudentRepository : IStudentRepository
     {
-        public Student GetStudenByID(string studentId)=> StudentManagement.Instance.GetBookCategoryByID(studentId);
+        public Student GetStudenByID(string studentId)=> StudentManagement.Instance.GetStudentByID(studentId);
 
-        public IEnumerable<Student> GetStudents() => StudentManagement.Instance.GetBookCategoryList();
+        public IEnumerable<Student> GetStudents() => StudentManagement.Instance.GetStudentList();
     }
 }

@@ -11,8 +11,8 @@ namespace LibraryManagement.Repository
 {
     internal class PublisherRepository : IPublisherRepository
     {
-        public Publisher GetPublisherByID(string publisher)=>PublisherManagement.Instance.GetBookCategoryByID(publisher);
+        public Publisher GetPublisherByID(string publisher)=>PublisherManagement.Instance.GetPublisherByID(publisher);
 
-        public IEnumerable<Publisher> GetPublishers() => PublisherManagement.Instance.GetBookCategoryList();
+        public IEnumerable<Publisher> GetPublishers() => PublisherManagement.Instance.GetPublisherList();
     }
 }
