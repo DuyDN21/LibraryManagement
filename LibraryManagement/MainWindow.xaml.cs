@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,31 @@ namespace LibraryManagement
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (sidebar.SelectedIndex)
+            {
+                case 0:
+                    navFrame.Navigate("/Pages/HomePage.xaml");
+                    break;
+                case 1:
+                    navFrame.Navigate("/Pages/BookManagementPage.xaml");
+                    break;
+                case 2:
+                    navFrame.Navigate("/Pages/ReaderManagementPage.xaml");
+                    break;
+                case 3:
+                    navFrame.Navigate("/Pages/BorrowBookPage.xaml");
+                    break;
+                case 4:
+                    navFrame.Navigate("/Pages/StatisticPage.xaml");
+                    break;
+                case 5:
+                    navFrame.Navigate("/Pages/AboutPage.xaml");
+                    break;
+            }
         }
     }
 }
