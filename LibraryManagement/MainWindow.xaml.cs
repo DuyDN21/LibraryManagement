@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LibraryManagement.Pages;
 
 namespace LibraryManagement
 {
@@ -21,9 +22,21 @@ namespace LibraryManagement
     /// </summary>
     public partial class MainWindow : Window
     {
+        Page homePage;
+        Page bookManagementPage;
+        Page readerManagementPage;
+        Page borrowBookPage;
+        Page statisticPage;
+        Page aboutPage;
         public MainWindow()
         {
             InitializeComponent();
+            homePage = new HomePage();
+            bookManagementPage = new BookManagementPage();
+            readerManagementPage = new ReaderManagementPage();
+            borrowBookPage = new BorrowBookPage();
+            statisticPage = new StatisticPage();
+            aboutPage = new AboutPage();
         }
 
         private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -31,22 +44,22 @@ namespace LibraryManagement
             switch (sidebar.SelectedIndex)
             {
                 case 0:
-                    navFrame.Navigate("/Pages/HomePage.xaml");
+                    navFrame.Navigate(homePage);
                     break;
                 case 1:
-                    navFrame.Navigate("/Pages/BookManagementPage.xaml");
+                    navFrame.Navigate(bookManagementPage);
                     break;
                 case 2:
-                    navFrame.Navigate("/Pages/ReaderManagementPage.xaml");
+                    navFrame.Navigate(readerManagementPage);
                     break;
                 case 3:
-                    navFrame.Navigate("/Pages/BorrowBookPage.xaml");
+                    navFrame.Navigate(borrowBookPage);
                     break;
                 case 4:
-                    navFrame.Navigate("/Pages/StatisticPage.xaml");
+                    navFrame.Navigate(statisticPage);
                     break;
                 case 5:
-                    navFrame.Navigate("/Pages/AboutPage.xaml");
+                    navFrame.Navigate(aboutPage);
                     break;
             }
         }

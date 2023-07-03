@@ -9,9 +9,11 @@
 
   <ItemGroup>
     <None Remove="Images\About.png" />
+    <None Remove="Images\banner.jpg" />
     <None Remove="Images\Book.png" />
     <None Remove="Images\Borrow.png" />
     <None Remove="Images\Home.png" />
+    <None Remove="Images\logo-fpt.png" />
     <None Remove="Images\Logo.png" />
     <None Remove="Images\Person.png" />
     <None Remove="Images\Statistic.png" />
@@ -35,9 +37,11 @@
 
   <ItemGroup>
     <Resource Include="Images\About.png" />
+    <Resource Include="Images\banner.jpg" />
     <Resource Include="Images\Book.png" />
     <Resource Include="Images\Borrow.png" />
     <Resource Include="Images\Home.png" />
+    <Resource Include="Images\logo-fpt.png" />
     <Resource Include="Images\Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

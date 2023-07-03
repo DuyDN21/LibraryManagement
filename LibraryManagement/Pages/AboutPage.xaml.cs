@@ -20,9 +20,26 @@ namespace LibraryManagement.Pages
     /// </summary>
     public partial class AboutPage : Page
     {
+        Page about;
+        Page regu;
         public AboutPage()
         {
             InitializeComponent();
+            about= new AboutContent();
+            regu= new Regulations();
+        }
+
+        private void bar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (bar.SelectedIndex)
+            {
+                case 0:
+                    contentFrame.Navigate(about);
+                    break;
+                case 1:
+                    contentFrame.Navigate(regu);
+                    break;
+            }
         }
     }
 }

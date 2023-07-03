@@ -1,0 +1,43 @@
+﻿<Page x:Class="LibraryManagement.Pages.AboutContent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibraryManagement.Pages"
+      mc:Ignorable="d" 
+      Title="AboutContent" Height="375" Width="680">
+
+    <Grid Background="White">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical" Margin="0,0,0,15">
+                <Label HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="18">FPT University Library</Label>
+
+                
+                <TextBlock Padding="20,0,0,0" TextWrapping="Wrap">
+                Thư viện trường ĐH FPT cơ sở Hà Nội được chính thức thành lập theo quyết định số 1029/QĐ-ĐHFPT ngày 09/12/2015 của Hiệu trưởng trường ĐH FPT. Chức năng và nhiệm vụ của thư viện như sau:
+                </TextBlock>
+
+                <Label FontWeight="DemiBold" FontSize="12">Chức năng:</Label>
+                <TextBlock Padding="20,0,0,0" TextWrapping="Wrap">
+                Là phòng học liệu tích hợp được xây dựng và phát triển nhằm hỗ trợ hiệu quả việc giảng dạy, nghiên cứu và các hoạt động thông tin học thuật tới đội ngũ giảng viên, nhân viên và sinh viên FPT.
+                </TextBlock>
+
+                <Label FontWeight="DemiBold" FontSize="12">Nhiệm vụ:</Label>
+                <TextBlock Padding="20,0,0,0" TextWrapping="Wrap">
+                - Thu thập, bổ sung, xử lý, thông báo, cung cấp tài liệu, thông tin về các lĩnh vực khoa học nhằm hỗ trợ hiệu quả cho việc giảng dạy, nghiên cứu, học tập và các hoạt động học thuật của đội ngũ giảng viên, nhân viên và sinh viên<LineBreak />
+                - Đảm bảo cung cấp thông tin cho người dùng tin một cách đầy đủ, chính xác, đúng đối tượng, điều tra, đánh giá đúng nhu cầu tin của giảng viên, cán bộ nghiên cứu, học viên cao học, nghiên cứu sinh và sinh viên<LineBreak />
+                - Tham mưu, lập kế hoạch dài hạn, ngắn hạn cho giám đốc cơ sở đào tạo về công tác thông tin tư liệu<LineBreak />
+                - Tổ chức sắp xếp, lưu trữ, bảo quản kho tư liệu của cơ sở bao gồm tất cả các loại hình ấn phẩm và vật mang tin<LineBreak />
+                - Xây dựng hệ thống tra cứu tin thích hợp nhằm phục vụ và phổ biến thông tin cho toàn thể người dùng tin<LineBreak />
+                - Thu thập, lưu chiểu những ấn phẩm do Nhà trường xuất bản, các luận văn, đồ án tốt nghiệp<LineBreak />
+                - Phát triển quan hệ trao đổi, hợp tác trực tiếp với các trung tâm thông tin – thư viện, các tổ chức khoa học, các trường đại học trong và ngoài nước
+                </TextBlock>
+
+                <Label FontWeight="DemiBold" FontSize="12">Bộ sưu tập:</Label>
+                <TextBlock Padding="20,0,0,0" TextWrapping="Wrap">
+                Là phòng học liệu tích hợp được xây dựng và phát triển nhằm hỗ trợ hiệu quả việc giảng dạy, nghiên cứu và các hoạt động thông tin học thuật tới đội ngũ giảng viên, nhân viên và sinh viên FPT.
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
