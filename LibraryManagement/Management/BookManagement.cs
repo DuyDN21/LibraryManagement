@@ -33,7 +33,7 @@ namespace LibraryManagement.Management
             try
             {
                 var myLibrary = new LibraryManagementContext();
-                books = myLibrary.Books.ToList();
+                books = myLibrary.Books.Include(books => books.Category).Include(books => books.Publisher).Include(books => books.Author).ToList();
             }
             catch (Exception ex)
             {

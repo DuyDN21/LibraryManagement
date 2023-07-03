@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LibraryManagement.IRepository;
+using LibraryManagement.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,12 @@ namespace LibraryManagement.Pages
     /// </summary>
     public partial class BookManagementPage : Page
     {
+        IBookRepository bookRepository;
         public BookManagementPage()
         {
             InitializeComponent();
+            bookRepository = new BookRepository();
+            lvBooks.ItemsSource = bookRepository.GetBooks();
         }
     }
 }

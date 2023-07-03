@@ -9,6 +9,21 @@
       Title="ReaderManagementPage">
 
     <Grid>
-        
+        <ListView Name="lvStudents" Width="Auto" Height="Auto">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Student ID" Width="100"
+                                            DisplayMemberBinding="{Binding Path=StudentId }"/>
+                    <GridViewColumn Header="Student Name" Width="200"
+                                            DisplayMemberBinding="{Binding Path=StudentName}"/>
+                    <GridViewColumn Header="Phone" Width="100"
+                                            DisplayMemberBinding="{Binding Path=Phone }"/>
+                    <GridViewColumn Header="Date Of Birth" Width="200"
+                                             DisplayMemberBinding="{Binding Path=Dob}"/>
+                    <GridViewColumn Header="Address" Width="200" 
+                                            DisplayMemberBinding="{Binding Path=Address}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>

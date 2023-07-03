@@ -9,6 +9,23 @@
       Title="BookManagementPage">
 
     <Grid>
-        
+        <ListView Name="lvBooks" Width="Auto" Height="Auto">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Book ID" Width="50"
+                                            DisplayMemberBinding="{Binding Path=BookId }"/>
+                    <GridViewColumn Header="Title" Width="200"
+                                            DisplayMemberBinding="{Binding Path=BookName}"/>
+                    <GridViewColumn Header="Amount" Width="50"
+                                            DisplayMemberBinding="{Binding Path=Amount }"/>
+                    <GridViewColumn Header="Category" Width="200"
+                                             DisplayMemberBinding="{Binding Path=Category.CategoryName}"/>
+                    <GridViewColumn Header="Author" Width="200" 
+                                            DisplayMemberBinding="{Binding Path=Author.AuthorName}"/>
+                    <GridViewColumn Header="Publisher" Width="200" 
+                                            DisplayMemberBinding="{Binding Path=Publisher.PublisherName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>
