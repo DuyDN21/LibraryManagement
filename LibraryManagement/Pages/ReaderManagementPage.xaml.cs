@@ -1,5 +1,7 @@
-﻿using LibraryManagement.IRepository;
+﻿using LibraryManagement.DataAccess;
+using LibraryManagement.IRepository;
 using LibraryManagement.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +30,61 @@ namespace LibraryManagement.Pages
             InitializeComponent();
             studentRepository = new StudentRepository();
             lvStudents.ItemsSource = studentRepository.GetStudents();
+        }
+
+        private void btn_RefreshClicked(object sender, RoutedEventArgs e)
+        {
+            var myLibrary = new LibraryManagementContext();
+            IQueryable<Student> studentsIQ = from s in myLibrary.Students select s;
+            if (sortName.IsChecked== true)
+            {
+                if(sortAcs.IsChecked == true)
+                {
+                    studentsIQ = studentsIQ.OrderBy(s => s.StudentName);
+                }
+                if(sortDes.IsChecked == true)
+                {
+                    studentsIQ = studentsIQ.OrderByDescending(s => s.StudentName);
+                }
+            }
+            if(sortDOB.IsChecked == true)
+            {
+                if (sortAcs.IsChecked == true)
+                {
+                    studentsIQ = studentsIQ.OrderBy(s => s.Dob);
+                }
+                if (sortDes.IsChecked == true)
+                {
+                    studentsIQ = studentsIQ.OrderByDescending(s => s.Dob);
+                }
+            }
+            lvStudents.ItemsSource = studentsIQ.ToList();
+        }
+
+        private void btn_SearchClicked(object sender, RoutedEventArgs e)
+        {
+            if(rd_studentid.IsChecked == true)
+            {
+                var myLibrary = new LibraryManagementContext();
+                IQueryable<Student> studentsIQ = from s in myLibrary.Students select s;
+                if (!String.IsNullOrEmpty(search_id.Text))
+                {
+                    studentsIQ = studentsIQ.Where(s => s.StudentId
+                    .Contains(search_id.Text));
+                }
+                lvStudents.ItemsSource= studentsIQ.ToList();
+            }
+            if (rd_studentname.IsChecked == true)
+            {
+                var myLibrary = new LibraryManagementContext();
+                IQueryable<Student> studentsIQ = from s in myLibrary.Students select s;
+                if (!String.IsNullOrEmpty(search_name.Text))
+                {
+                    studentsIQ = studentsIQ.Where(s => s.StudentName
+                    .Contains(search_name.Text));
+                }
+                lvStudents.ItemsSource = studentsIQ.ToList();
+            }
         }
     }
 }

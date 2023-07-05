@@ -1,5 +1,7 @@
-﻿using LibraryManagement.IRepository;
+﻿using LibraryManagement.DataAccess;
+using LibraryManagement.IRepository;
 using LibraryManagement.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,12 +44,44 @@ namespace LibraryManagement.Pages
 
         private void btn_SearchClicked(object sender, RoutedEventArgs e)
         {
-
+            var myLibrary = new LibraryManagementContext();
+            IQueryable<Book> books = from s in myLibrary.Books.Include(s=>s.Author) select s;
+            //if (!String.IsNullOrEmpty(search_bookName.Text))
+            //{
+                books = books.Where(s => s.BookName
+                    .Contains(search_bookName.Text) &&  s.Author.AuthorName
+                    .Contains(search_author.Text));
+            //}
+            lvBooks.ItemsSource = books.ToList();
         }
 
         private void btn_RefreshClicked(object sender, RoutedEventArgs e)
         {
-
+            var myLibrary = new LibraryManagementContext();
+            IQueryable<Book> books = from s in myLibrary.Books.Include(books => books.Category).Include(books => books.Publisher).Include(books => books.Author) select s;
+            if (sortName.IsChecked == true)
+            {
+                if (sortAsc.IsChecked == true)
+                {
+                    books = books.OrderBy(s => s.BookName);
+                }
+                if (sortDes.IsChecked == true)
+                {
+                    books = books.OrderByDescending(s => s.BookName);
+                }
+            }
+            if (sortAmount.IsChecked == true)
+            {
+                if (sortAsc.IsChecked == true)
+                {
+                    books = books.OrderBy(s => s.Amount);
+                }
+                if (sortDes.IsChecked == true)
+                {
+                    books = books.OrderByDescending(s => s.Amount);
+                }
+            }
+            lvBooks.ItemsSource = books.ToList();
         }
     }
 }
