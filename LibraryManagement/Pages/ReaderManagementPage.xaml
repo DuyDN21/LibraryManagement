@@ -8,8 +8,104 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ReaderManagementPage">
 
-    <Grid>
-        <ListView Name="lvStudents" Width="Auto" Height="Auto">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="250"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="READER MANAGE" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" Height="30" FontSize="18" FontWeight="Bold"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Header="SEARCH" Grid.Row="0">
+                    <Canvas>
+                        <RadioButton Canvas.Top="5">
+                            <Canvas>
+                                <Label Content="Student name:" Width="95"/>
+                                <TextBox x:Name="search_bookName" Width="120" Canvas.Left="100" Canvas.Top="5"/>
+                            </Canvas>
+                        </RadioButton>
+
+                        <RadioButton Canvas.Top="30">
+                            <Canvas>
+                                <Label Content="Student ID:" Canvas.Top="5" Width="95"/>
+                                <TextBox x:Name="search_author" Width="120" Canvas.Left="100" Canvas.Top="7"/>
+                            </Canvas>
+                        </RadioButton>
+                    </Canvas>
+                </GroupBox>
+
+                <GroupBox Header="SORT" Grid.Row="1">
+                    <Canvas>
+                        <RadioButton GroupName="sort_type" Canvas.Top="5">Student name</RadioButton>
+                        <RadioButton GroupName="sort_type" Canvas.Top="25">DOB</RadioButton>
+
+                        <RadioButton GroupName="sort_type" Canvas.Top="5" Canvas.Right="5">A -> Z</RadioButton>
+                        <RadioButton GroupName="sort_type" Canvas.Top="25" Canvas.Right="5">Z -> A</RadioButton>
+                    </Canvas>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Header="BORROW" Grid.Row="0">
+                    <ListView Name="lvBorrow" BorderThickness="1,0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Book ID" Width="80"/>
+                                <GridViewColumn Header="Book Name" Width="130"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </GroupBox>
+                
+                <Canvas Grid.Row="1">
+                    <Button Content="REFRESH" FontWeight="DemiBold" Width="90" Height="45" Canvas.Top="15" Canvas.Right="20" Click="btn_RefreshClicked"/>
+                    <Button Content="SEARCH" FontWeight="DemiBold" Width="90" Height="45" Canvas.Top="15" Canvas.Left="20" Click="btn_SearchClicked"/>
+                </Canvas>
+
+            </Grid>
+
+            <GroupBox Header="INFORMATION" Grid.Column="3" Margin="5,0">
+                <Canvas>
+                    <Label Content="Student ID"/>
+                    <TextBox Canvas.Left="90" Width="130" Canvas.Top="5" IsEnabled="False"/>
+
+                    <Label Content="Student name" Canvas.Top="25"/>
+                    <TextBox Canvas.Left="90" Width="130" Canvas.Top="30" IsEnabled="False"/>
+
+                    <Label Content="Phone" Canvas.Top="55"/>
+                    <TextBox Canvas.Left="90" Width="130" Canvas.Top="60" IsEnabled="False"/>
+
+                    <Label Content="DOB" Canvas.Top="85"/>
+                    <TextBox Canvas.Left="90" Width="130" Canvas.Top="90" IsEnabled="False"/>
+
+                    <Label Content="Address" Canvas.Top="115"/>
+                    <TextBox Canvas.Left="90" Width="130" Canvas.Top="120" IsEnabled="False"/>
+
+                </Canvas>
+            </GroupBox>
+
+        </Grid>
+
+        <ListView Name="lvStudents" Grid.Row="2" Margin="0,5,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Student ID" Width="100"
