@@ -5,11 +5,113 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LibraryManagement.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="BookManagementPage">
+      Title="BookManagementPage" Height="465" Width="680">
 
-    <Grid>
-        <ListView Name="lvBooks" Width="Auto" Height="Auto">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="250"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="BOOK MANAGE" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" Height="30" FontSize="18" FontWeight="Bold"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Header="SEARCH" Grid.Row="0">
+                    <Canvas>
+                        <Label Content="Book name:" Width="75"/>
+                        <TextBox x:Name="search_bookName" Width="120" Canvas.Left="80" Canvas.Top="5"/>
+
+                        <Label Content="Author:" Canvas.Top="30" Width="75"/>
+                        <TextBox x:Name="search_author" Width="120" Canvas.Left="80" Canvas.Top="35"/>
+                    </Canvas>
+                </GroupBox>
+
+                <GroupBox Header="SORT" Grid.Row="1">
+                    <Canvas>
+                        <RadioButton GroupName="sort_type" Canvas.Top="5">Book name</RadioButton>
+                        <RadioButton GroupName="sort_type" Canvas.Top="25">Price</RadioButton>
+                        <RadioButton GroupName="sort_type" Canvas.Top="45">Amount</RadioButton>
+
+                        <RadioButton GroupName="sort_type" Canvas.Top="5" Canvas.Right="5">A -> Z</RadioButton>
+                        <RadioButton GroupName="sort_type" Canvas.Top="25" Canvas.Right="5">Z -> A</RadioButton>
+                    </Canvas>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Header="FILTER" Grid.Row="0">
+                    <Canvas>
+                        <WrapPanel>
+                            <Label Content="Price:"/>
+                            <TextBlock Text="From" VerticalAlignment="Center"/>
+                            <TextBox Width="60" Margin="2"/>
+                            <TextBlock Text="To" VerticalAlignment="Center"/>
+                            <TextBox Width="60" Margin="2"/>
+                        </WrapPanel>
+
+                        <Label Content="Category:" Canvas.Top="30"/>
+                        <ComboBox Canvas.Top="32" Canvas.Left="68" Width="130">
+                            
+                        </ComboBox>
+                    </Canvas>
+                </GroupBox>
+
+                <Canvas Grid.Row="1">
+                    <Button Content="ADD" FontWeight="DemiBold" Width="90" Height="25" Canvas.Top="15" Canvas.Left="10" Click="btn_AddClicked"/>
+                    <Button Content="EDIT" FontWeight="DemiBold" Width="90" Height="25" Canvas.Right="10" Canvas.Top="15" Click="btn_EditClicked"/>
+                    <Button Content="REFRESH" FontWeight="DemiBold" Width="90" Height="25" Canvas.Top="55" Canvas.Right="10" Click="btn_RefreshClicked"/>
+                    <Button Content="SEARCH" FontWeight="DemiBold" Width="90" Height="25" Canvas.Top="55" Canvas.Left="10" Click="btn_SearchClicked"/>
+                </Canvas>
+
+            </Grid>
+
+            <GroupBox Header="INFORMATION" Grid.Column="3" Margin="5,0">
+                <Canvas>
+                    <Label Content="Book ID"/>
+                    <TextBox Canvas.Left="70" Width="130" Canvas.Top="5" IsEnabled="False"/>
+
+                    <Label Content="Book name" Canvas.Top="20"/>
+                    <TextBox Canvas.Left="70" Width="130" Canvas.Top="25" IsEnabled="False"/>
+                    
+                    <Label Content="Category" Canvas.Top="40"/>
+                    <TextBox Canvas.Left="70" Width="130" Canvas.Top="45" IsEnabled="False"/>
+                    
+                    <Label Content="Author" Canvas.Top="60"/>
+                    <TextBox Canvas.Left="70" Width="130" Canvas.Top="65" IsEnabled="False"/>
+                    
+                    <Label Content="Amount" Canvas.Top="80"/>
+                    <TextBox Canvas.Left="70" Width="130" Canvas.Top="85" IsEnabled="False"/>
+                    
+                    <Label Content="Publisher" Canvas.Top="100"/>
+                    <TextBox Canvas.Left="70" Width="130" Canvas.Top="105" IsEnabled="False"/>
+                    
+                    <Label Content="Available" Canvas.Top="120"/>
+                    <TextBox Canvas.Left="70" Width="130" Canvas.Top="125" IsEnabled="False"/>
+                    
+                </Canvas>
+            </GroupBox>
+
+        </Grid>
+
+        <ListView Name="lvBooks" Grid.Row="2" Margin="0,5,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Book ID" Width="50"

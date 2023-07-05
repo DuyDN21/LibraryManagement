@@ -37,7 +37,6 @@ namespace LibraryManagement.Management
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
             return books;

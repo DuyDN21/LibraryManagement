@@ -37,6 +37,9 @@ namespace LibraryManagement
             borrowBookPage = new BorrowBookPage();
             statisticPage = new StatisticPage();
             aboutPage = new AboutPage();
+
+            navFrame.Navigate(homePage);
+            sidebar.SelectedIndex = 0;
         }
 
         private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)

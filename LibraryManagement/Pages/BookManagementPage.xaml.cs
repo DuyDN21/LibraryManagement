@@ -29,5 +29,25 @@ namespace LibraryManagement.Pages
             bookRepository = new BookRepository();
             lvBooks.ItemsSource = bookRepository.GetBooks();
         }
+
+        private void btn_AddClicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_EditClicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_SearchClicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_RefreshClicked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

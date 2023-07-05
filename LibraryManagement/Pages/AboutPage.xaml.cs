@@ -27,6 +27,9 @@ namespace LibraryManagement.Pages
             InitializeComponent();
             about= new AboutContent();
             regu= new Regulations();
+
+            contentFrame.Navigate(about);
+            bar.SelectedIndex = 0;
         }
 
         private void bar_SelectionChanged(object sender, SelectionChangedEventArgs e)
