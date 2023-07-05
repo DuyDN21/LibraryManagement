@@ -32,17 +32,17 @@
 
                 <GroupBox Header="SEARCH" Grid.Row="0">
                     <Canvas>
-                        <RadioButton Canvas.Top="5">
+                        <RadioButton Name="rd_studentname" GroupName="search" Canvas.Top="5">
                             <Canvas>
                                 <Label Content="Student name:" Width="95"/>
-                                <TextBox x:Name="search_bookName" Width="120" Canvas.Left="100" Canvas.Top="5"/>
+                                <TextBox x:Name="search_name" Width="120" Canvas.Left="100" Canvas.Top="5"/>
                             </Canvas>
                         </RadioButton>
 
-                        <RadioButton Canvas.Top="30">
+                        <RadioButton Name="rd_studentid" GroupName="search" Canvas.Top="30">
                             <Canvas>
                                 <Label Content="Student ID:" Canvas.Top="5" Width="95"/>
-                                <TextBox x:Name="search_author" Width="120" Canvas.Left="100" Canvas.Top="7"/>
+                                <TextBox x:Name="search_id" Width="120" Canvas.Left="100" Canvas.Top="7"/>
                             </Canvas>
                         </RadioButton>
                     </Canvas>
@@ -50,11 +50,11 @@
 
                 <GroupBox Header="SORT" Grid.Row="1">
                     <Canvas>
-                        <RadioButton GroupName="sort_type" Canvas.Top="5">Student name</RadioButton>
-                        <RadioButton GroupName="sort_type" Canvas.Top="25">DOB</RadioButton>
+                        <RadioButton Name="sortName" GroupName="sort_type1" Canvas.Top="5">Student name</RadioButton>
+                        <RadioButton Name="sortDOB" GroupName="sort_type1" Canvas.Top="25">DOB</RadioButton>
 
-                        <RadioButton GroupName="sort_type" Canvas.Top="5" Canvas.Right="5">A -> Z</RadioButton>
-                        <RadioButton GroupName="sort_type" Canvas.Top="25" Canvas.Right="5">Z -> A</RadioButton>
+                        <RadioButton Name="sortAcs" GroupName="sort_type2" Canvas.Top="5" Canvas.Right="5">A -> Z</RadioButton>
+                        <RadioButton Name="sortDes" GroupName="sort_type2" Canvas.Top="25" Canvas.Right="5">Z -> A</RadioButton>
                     </Canvas>
                 </GroupBox>
             </Grid>

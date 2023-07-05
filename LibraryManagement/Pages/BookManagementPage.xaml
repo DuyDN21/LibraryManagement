@@ -41,12 +41,12 @@
 
                 <GroupBox Header="SORT" Grid.Row="1">
                     <Canvas>
-                        <RadioButton GroupName="sort_type" Canvas.Top="5">Book name</RadioButton>
-                        <RadioButton GroupName="sort_type" Canvas.Top="25">Price</RadioButton>
-                        <RadioButton GroupName="sort_type" Canvas.Top="45">Amount</RadioButton>
+                        <RadioButton Name="sortName" GroupName="sort_type1" Canvas.Top="5">Book name</RadioButton>
+                        <RadioButton Name="sortPrice" GroupName="sort_type1" Canvas.Top="25">Price</RadioButton>
+                        <RadioButton Name="sortAmount" GroupName="sort_type1" Canvas.Top="45">Amount</RadioButton>
 
-                        <RadioButton GroupName="sort_type" Canvas.Top="5" Canvas.Right="5">A -> Z</RadioButton>
-                        <RadioButton GroupName="sort_type" Canvas.Top="25" Canvas.Right="5">Z -> A</RadioButton>
+                        <RadioButton Name="sortAsc" GroupName="sort_type2" Canvas.Top="5" Canvas.Right="5">A -> Z</RadioButton>
+                        <RadioButton Name="sortDes" GroupName="sort_type2" Canvas.Top="25" Canvas.Right="5">Z -> A</RadioButton>
                     </Canvas>
                 </GroupBox>
             </Grid>
