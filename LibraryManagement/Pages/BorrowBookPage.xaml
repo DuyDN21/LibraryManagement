@@ -5,10 +5,118 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LibraryManagement.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="BorrowBookPage">
+      Title="BorrowBookPage" Width="820" Height="465">
 
-    <Grid>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" FontWeight="Bold" FontSize="25" TextAlignment="Center"> 
+            BORROW BOOK
+        </TextBlock>
         
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="275"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="5,0,5,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Header="Student info" Grid.Row="0">
+                    <Canvas>
+                        <Label Content="Student ID:"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="5"/>
+
+                        <Label Content="Student name:" Canvas.Top="25"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="30"/>
+
+                        <Label Content="Phone:" Canvas.Top="50"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="55"/>
+                    </Canvas>
+                </GroupBox>
+                
+                <GroupBox Header="Book info" Grid.Row="1">
+                    <Canvas>
+                        <Label Content="Book ID:"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="5"/>
+
+                        <Label Content="Book name:" Canvas.Top="25"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="30"/>
+
+                        <Label Content="Available:" Canvas.Top="50"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="55"/>
+                    </Canvas>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="5,0,5,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Header="Search" Grid.Row="0">
+                    <Canvas>
+                        <GroupBox Header="Search by">
+                            <WrapPanel>
+                                <RadioButton Margin="5">Student ID</RadioButton>
+                                <RadioButton Margin="5">Book ID</RadioButton>
+                            </WrapPanel>
+                        </GroupBox>
+
+                        <GroupBox Header="Input for searching" Canvas.Right="90" Width="250">
+                            <TextBox Width="180" Margin="5"/>
+                        </GroupBox>
+
+                        <Button Canvas.Right="10" Width="65" Height="30" Canvas.Top="14" FontWeight="DemiBold">Search</Button>
+                    </Canvas>
+                </GroupBox>
+
+                <GroupBox Header="Borrow record" Grid.Row="1">
+                    <Canvas>
+                        <Label Content="Book ID" Canvas.Top="5"/>
+                        <TextBox Width="100" Canvas.Top="8" Canvas.Left="80" IsEnabled="False"/>
+
+                        <Label Content="Book Name" Canvas.Top="30"/>
+                        <TextBox Width="100" Canvas.Top="32" Canvas.Left="80" IsEnabled="False"/>
+                        
+                        <Label Content="Student ID" Canvas.Top="54"/>
+                        <TextBox Width="100" Canvas.Top="56" Canvas.Left="80" IsEnabled="False"/>
+                        
+                        <Label Content="Borrowed Date" Canvas.Left="200" Canvas.Top="5"/>
+                        <TextBox Width="100" Canvas.Top="8" Canvas.Left="300" IsEnabled="False"/>
+                        
+                        <Label Content="Return Date" Canvas.Top="30" Canvas.Left="200"/>
+                        <TextBox Width="100" Canvas.Top="32" Canvas.Left="300" IsEnabled="False"/>
+
+                        <Button Content="Borrow" Canvas.Bottom="12" Canvas.Right="250" Padding="5" Width="50"/>
+                        <Button Content="Extend" Canvas.Bottom="12" Canvas.Right="180" Padding="5" Width="50"/>
+                        <Button Content="Return" Canvas.Bottom="12" Canvas.Right="110" Padding="5" Width="50"/>
+                        <Button Content="Refresh" Canvas.Bottom="12" Canvas.Right="40" Padding="5" Width="50"/>
+                    </Canvas>
+                </GroupBox>
+            </Grid>
+        </Grid>
+
+        <ListView Name="lvBooks" Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Book ID" Width="50"/>
+                    <GridViewColumn Header="Book name" Width="150"/>
+                    <GridViewColumn Header="Student ID" Width="100"/>
+                    <GridViewColumn Header="Student name" Width="200"/>
+                    <GridViewColumn Header="Borrowed Date" Width="150"/>
+                    <GridViewColumn Header="Return Date" Width="150"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>
