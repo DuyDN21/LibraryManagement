@@ -1,4 +1,8 @@
-﻿using System;
+﻿using LibraryManagement.DataAccess;
+using LibraryManagement.IRepository;
+using LibraryManagement.Repository;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +24,30 @@ namespace LibraryManagement.Pages
     /// </summary>
     public partial class BorrowBookPage : Page
     {
+        IBorrowBookRepository borrowBookRepository;
         public BorrowBookPage()
         {
+            borrowBookRepository = new BorrowBookRepository();
             InitializeComponent();
+            lvBorrows.ItemsSource = borrowBookRepository.GetBorrowList();
+        }
+
+        private void btn_SearchClicked(object sender, RoutedEventArgs e)
+        {
+            var myLibrary = new LibraryManagementContext();
+            IQueryable<BorrowBook> books = from s in myLibrary.BorrowBooks.Include(s => s.Student).Include(s => s.Book) select s;
+
+            if (rd_bookid.IsChecked == true)
+            {
+                books = books.Where(s => s.BookId
+                    .Contains(searchText.Text));
+            }
+            if(rd_studentid.IsChecked == true)
+            {
+                books = books.Where(s => s.StudentId
+                    .Contains(searchText.Text));
+            }
+            lvBorrows.ItemsSource = books.ToList();
         }
     }
 }

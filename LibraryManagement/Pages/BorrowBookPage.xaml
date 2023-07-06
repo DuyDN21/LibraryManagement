@@ -33,23 +33,28 @@
                 <GroupBox Header="Student info" Grid.Row="0">
                     <Canvas>
                         <Label Content="Student ID:"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="5"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="5"
+                                 />
 
                         <Label Content="Student name:" Canvas.Top="25"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="30"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="30"
+                                 />
 
                         <Label Content="Phone:" Canvas.Top="50"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="55"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="55"
+                                 />
                     </Canvas>
                 </GroupBox>
                 
                 <GroupBox Header="Book info" Grid.Row="1">
                     <Canvas>
                         <Label Content="Book ID:"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="5"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="5"
+                                 />
 
                         <Label Content="Book name:" Canvas.Top="25"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="30"/>
+                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="30"
+                                 />
 
                         <Label Content="Available:" Canvas.Top="50"/>
                         <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="55"/>
@@ -67,35 +72,54 @@
                     <Canvas>
                         <GroupBox Header="Search by">
                             <WrapPanel>
-                                <RadioButton Margin="5">Student ID</RadioButton>
-                                <RadioButton Margin="5">Book ID</RadioButton>
+                                <RadioButton Name="rd_studentid" GroupName="rd_search" Margin="5">Student ID</RadioButton>
+                                <RadioButton Name="rd_bookid" GroupName="rd_search" Margin="5">Book ID</RadioButton>
                             </WrapPanel>
                         </GroupBox>
 
                         <GroupBox Header="Input for searching" Canvas.Right="90" Width="250">
-                            <TextBox Width="180" Margin="5"/>
+                            <TextBox x:Name="searchText" Width="180" Margin="5"/>
                         </GroupBox>
 
-                        <Button Canvas.Right="10" Width="65" Height="30" Canvas.Top="14" FontWeight="DemiBold">Search</Button>
+                        <Button Canvas.Right="10" Width="65" Height="30" Canvas.Top="14" FontWeight="DemiBold" Click="btn_SearchClicked">Search</Button>
                     </Canvas>
                 </GroupBox>
 
                 <GroupBox Header="Borrow record" Grid.Row="1">
                     <Canvas>
                         <Label Content="Book ID" Canvas.Top="5"/>
-                        <TextBox Width="100" Canvas.Top="8" Canvas.Left="80" IsEnabled="False"/>
+                        <TextBox Width="100" Canvas.Top="8" Canvas.Left="80" IsEnabled="False"
+                                 IsReadOnly="true"
+                            Text="{Binding Path=BookId, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
 
                         <Label Content="Book Name" Canvas.Top="30"/>
-                        <TextBox Width="100" Canvas.Top="32" Canvas.Left="80" IsEnabled="False"/>
+                        <TextBox Width="100" Canvas.Top="32" Canvas.Left="80" IsEnabled="False"
+                                 IsReadOnly="true"
+                            Text="{Binding Path=Book.BookName, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
                         
                         <Label Content="Student ID" Canvas.Top="54"/>
-                        <TextBox Width="100" Canvas.Top="56" Canvas.Left="80" IsEnabled="False"/>
+                        <TextBox Width="100" Canvas.Top="56" Canvas.Left="80" IsEnabled="False"
+                                 IsReadOnly="true"
+                            Text="{Binding Path=StudentId, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
                         
                         <Label Content="Borrowed Date" Canvas.Left="200" Canvas.Top="5"/>
-                        <TextBox Width="100" Canvas.Top="8" Canvas.Left="300" IsEnabled="False"/>
+                        <TextBox Width="100" Canvas.Top="8" Canvas.Left="300" IsEnabled="False"
+                                 IsReadOnly="true"
+                            Text="{Binding Path=BorrowedDate, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
                         
                         <Label Content="Return Date" Canvas.Top="30" Canvas.Left="200"/>
-                        <TextBox Width="100" Canvas.Top="32" Canvas.Left="300" IsEnabled="False"/>
+                        <TextBox Width="100" Canvas.Top="32" Canvas.Left="300" IsEnabled="False"
+                                 Text="{Binding Path=ReturnDate, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
 
                         <Button Content="Borrow" Canvas.Bottom="12" Canvas.Right="250" Padding="5" Width="50"/>
                         <Button Content="Extend" Canvas.Bottom="12" Canvas.Right="180" Padding="5" Width="50"/>
@@ -106,15 +130,21 @@
             </Grid>
         </Grid>
 
-        <ListView Name="lvBooks" Grid.Row="2">
+        <ListView Name="lvBorrows" Grid.Row="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Book ID" Width="50"/>
-                    <GridViewColumn Header="Book name" Width="150"/>
-                    <GridViewColumn Header="Student ID" Width="100"/>
-                    <GridViewColumn Header="Student name" Width="200"/>
-                    <GridViewColumn Header="Borrowed Date" Width="150"/>
-                    <GridViewColumn Header="Return Date" Width="150"/>
+                    <GridViewColumn Header="Book ID" Width="50"
+                                    DisplayMemberBinding="{Binding Path=BookId }"/>
+                    <GridViewColumn Header="Book name" Width="150"
+                                    DisplayMemberBinding="{Binding Path=Book.BookName }"/>
+                    <GridViewColumn Header="Student ID" Width="100"
+                                    DisplayMemberBinding="{Binding Path=StudentId }"/>
+                    <GridViewColumn Header="Student name" Width="200"
+                                    DisplayMemberBinding="{Binding Path=Student.StudentName }"/>
+                    <GridViewColumn Header="Borrowed Date" Width="150"
+                                    DisplayMemberBinding="{Binding Path=BorrowedDate }"/>
+                    <GridViewColumn Header="Return Date" Width="150"
+                                    DisplayMemberBinding="{Binding Path=ReturnDate }"/>
                 </GridView>
             </ListView.View>
         </ListView>

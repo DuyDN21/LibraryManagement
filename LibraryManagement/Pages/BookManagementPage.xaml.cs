@@ -45,20 +45,13 @@ namespace LibraryManagement.Pages
         private void btn_SearchClicked(object sender, RoutedEventArgs e)
         {
             var myLibrary = new LibraryManagementContext();
-            IQueryable<Book> books = from s in myLibrary.Books.Include(s=>s.Author) select s;
-            //if (!String.IsNullOrEmpty(search_bookName.Text))
-            //{
+            IQueryable<Book> books = from s in myLibrary.Books.Include(s=>s.Author).Include(s => s.Publisher).Include(s => s.Category) select s;
                 books = books.Where(s => s.BookName
-                    .Contains(search_bookName.Text) &&  s.Author.AuthorName
-                    .Contains(search_author.Text));
-            //}
-            lvBooks.ItemsSource = books.ToList();
-        }
-
-        private void btn_RefreshClicked(object sender, RoutedEventArgs e)
-        {
-            var myLibrary = new LibraryManagementContext();
-            IQueryable<Book> books = from s in myLibrary.Books.Include(books => books.Category).Include(books => books.Publisher).Include(books => books.Author) select s;
+                    .Contains(search_bookName.Text) &&  s.Author.AuthorName.Contains(search_author.Text));
+            if(cboCategory.SelectedItem != null)
+            {
+                books = books.Where(s => s.CategoryId == Int32.Parse(cboCategory.SelectedValue.ToString()));
+            }
             if (sortName.IsChecked == true)
             {
                 if (sortAsc.IsChecked == true)
@@ -82,6 +75,28 @@ namespace LibraryManagement.Pages
                 }
             }
             lvBooks.ItemsSource = books.ToList();
+        }
+
+        private void btn_RefreshClicked(object sender, RoutedEventArgs e)
+        {
+            cboCategory.SelectedIndex = -1;
+            sortAmount.IsChecked =false;
+            sortAsc.IsChecked = false;
+            sortDes.IsChecked = false;
+            sortName.IsChecked = false;
+            search_author.Text = "";
+            search_bookName.Text = "";
+        }
+
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var myLibrary = new LibraryManagementContext();
+            IQueryable<BookCategory> categories = from s in myLibrary.BookCategories select s;
+            cboCategory.ItemsSource = categories.ToList();
+            cboCategory.DisplayMemberPath = "CategoryName";
+            cboCategory.SelectedValuePath = "CategoryId";
+            
         }
     }
 }

@@ -34,20 +34,49 @@ namespace LibraryManagement.Pages
 
         private void btn_RefreshClicked(object sender, RoutedEventArgs e)
         {
+            rd_studentid.IsChecked = false;
+            rd_studentname.IsChecked = false;
+            sortName.IsChecked = false;
+            sortDOB.IsChecked = false;
+            sortDes.IsChecked = false;
+            sortAcs.IsChecked = false;
+            sortDes.IsChecked = false;
+            search_id.Text = "";
+            search_name.Text = "";
+        }
+
+        private void btn_SearchClicked(object sender, RoutedEventArgs e)
+        {
             var myLibrary = new LibraryManagementContext();
             IQueryable<Student> studentsIQ = from s in myLibrary.Students select s;
-            if (sortName.IsChecked== true)
+            if (rd_studentid.IsChecked == true)
             {
-                if(sortAcs.IsChecked == true)
+                if (!String.IsNullOrEmpty(search_id.Text))
+                {
+                    studentsIQ = studentsIQ.Where(s => s.StudentId
+                    .Contains(search_id.Text));
+                }
+            }
+            if (rd_studentname.IsChecked == true)
+            {
+                if (!String.IsNullOrEmpty(search_name.Text))
+                {
+                    studentsIQ = studentsIQ.Where(s => s.StudentName
+                    .Contains(search_name.Text));
+                }
+            }
+            if (sortName.IsChecked == true)
+            {
+                if (sortAcs.IsChecked == true)
                 {
                     studentsIQ = studentsIQ.OrderBy(s => s.StudentName);
                 }
-                if(sortDes.IsChecked == true)
+                if (sortDes.IsChecked == true)
                 {
                     studentsIQ = studentsIQ.OrderByDescending(s => s.StudentName);
                 }
             }
-            if(sortDOB.IsChecked == true)
+            if (sortDOB.IsChecked == true)
             {
                 if (sortAcs.IsChecked == true)
                 {
@@ -59,32 +88,6 @@ namespace LibraryManagement.Pages
                 }
             }
             lvStudents.ItemsSource = studentsIQ.ToList();
-        }
-
-        private void btn_SearchClicked(object sender, RoutedEventArgs e)
-        {
-            if(rd_studentid.IsChecked == true)
-            {
-                var myLibrary = new LibraryManagementContext();
-                IQueryable<Student> studentsIQ = from s in myLibrary.Students select s;
-                if (!String.IsNullOrEmpty(search_id.Text))
-                {
-                    studentsIQ = studentsIQ.Where(s => s.StudentId
-                    .Contains(search_id.Text));
-                }
-                lvStudents.ItemsSource= studentsIQ.ToList();
-            }
-            if (rd_studentname.IsChecked == true)
-            {
-                var myLibrary = new LibraryManagementContext();
-                IQueryable<Student> studentsIQ = from s in myLibrary.Students select s;
-                if (!String.IsNullOrEmpty(search_name.Text))
-                {
-                    studentsIQ = studentsIQ.Where(s => s.StudentName
-                    .Contains(search_name.Text));
-                }
-                lvStudents.ItemsSource = studentsIQ.ToList();
-            }
         }
     }
 }

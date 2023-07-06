@@ -33,7 +33,7 @@ namespace LibraryManagement.Management
             try
             {
                 var myLibrary = new LibraryManagementContext();
-                borrows = myLibrary.BorrowBooks.ToList();
+                borrows = myLibrary.BorrowBooks.Include(s=>s.Book).Include(s=>s.Student).ToList();
             }
             catch (Exception ex)
             {

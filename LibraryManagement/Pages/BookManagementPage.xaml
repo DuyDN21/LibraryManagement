@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LibraryManagement.Pages"
       mc:Ignorable="d" 
-      Title="BookManagementPage" Height="465" Width="680">
+      Title="BookManagementPage" Height="465" Width="680"
+      Loaded="Page_Loaded">
 
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -68,8 +69,8 @@
                         </WrapPanel>
 
                         <Label Content="Category:" Canvas.Top="30"/>
-                        <ComboBox Canvas.Top="32" Canvas.Left="68" Width="130">
-                            
+                        <ComboBox Canvas.Top="32" Canvas.Left="68" Width="130" x:Name="cboCategory">
+
                         </ComboBox>
                     </Canvas>
                 </GroupBox>
