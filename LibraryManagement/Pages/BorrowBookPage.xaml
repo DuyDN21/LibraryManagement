@@ -33,31 +33,44 @@
                 <GroupBox Header="Student info" Grid.Row="0">
                     <Canvas>
                         <Label Content="Student ID:"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="5"
-                                 />
+                        <TextBox x:Name="tbStudentId" IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="5"
+                                 Text="{Binding Path=StudentId, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
 
                         <Label Content="Student name:" Canvas.Top="25"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="30"
-                                 />
+                        <TextBox x:Name="tbStudentName" IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="30"
+                                 Text="{Binding Path=Student.StudentName, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
 
                         <Label Content="Phone:" Canvas.Top="50"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="55"
-                                 />
+                        <TextBox x:Name="tbPhone" IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="55"
+                                 Text="{Binding Path=Student.Phone, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
                     </Canvas>
                 </GroupBox>
                 
                 <GroupBox Header="Book info" Grid.Row="1">
                     <Canvas>
                         <Label Content="Book ID:"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="5"
-                                 />
+                        <TextBox x:Name="tbBookId" IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="5"
+                                 Text="{Binding Path=BookId, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
 
                         <Label Content="Book name:" Canvas.Top="25"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="30"
-                                 />
+                        <TextBox x:Name="tbBookName" IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="30"
+                                 Text="{Binding Path=Book.BookName, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
 
                         <Label Content="Available:" Canvas.Top="50"/>
-                        <TextBox IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="55"/>
+                        <TextBox x:Name="tbAmount" IsEnabled="False" Width="120" Canvas.Left="100" Canvas.Top="55"
+                                 Text="{Binding Path=Book.Amount, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBorrows, 
+                             Path=SelectedItem}"/>
                     </Canvas>
                 </GroupBox>
             </Grid>
@@ -124,7 +137,7 @@
                         <Button Content="Borrow" Canvas.Bottom="12" Canvas.Right="250" Padding="5" Width="50"/>
                         <Button Content="Extend" Canvas.Bottom="12" Canvas.Right="180" Padding="5" Width="50"/>
                         <Button Content="Return" Canvas.Bottom="12" Canvas.Right="110" Padding="5" Width="50"/>
-                        <Button Content="Refresh" Canvas.Bottom="12" Canvas.Right="40" Padding="5" Width="50"/>
+                        <Button Content="Refresh" Canvas.Bottom="12" Canvas.Right="40" Padding="5" Width="50" Click="btn_RefreshClick"/>
                     </Canvas>
                 </GroupBox>
             </Grid>

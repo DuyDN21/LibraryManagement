@@ -69,8 +69,10 @@
                     <ListView Name="lvBorrow" BorderThickness="1,0">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Book ID" Width="80"/>
-                                <GridViewColumn Header="Book Name" Width="130"/>
+                                <GridViewColumn Header="Book ID" Width="80"
+                                                DisplayMemberBinding="{Binding Path=BookId }"/>
+                                <GridViewColumn Header="Book Name" Width="130"
+                                                DisplayMemberBinding="{Binding Path=Book.BookName }"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -84,21 +86,36 @@
             </Grid>
 
             <GroupBox Header="INFORMATION" Grid.Column="3" Margin="5,0">
-                <Canvas>
+                <Canvas Height="137" VerticalAlignment="Top">
                     <Label Content="Student ID"/>
-                    <TextBox Canvas.Left="90" Width="130" Canvas.Top="5" IsEnabled="False"/>
+                    <TextBox x:Name="tbStudentId" Canvas.Left="90" Width="130" Canvas.Top="5" IsEnabled="False"
+                             Text="{Binding Path=StudentId, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvStudents, 
+                             Path=SelectedItem}" TextChanged="TextChanged"/>
 
                     <Label Content="Student name" Canvas.Top="25"/>
-                    <TextBox Canvas.Left="90" Width="130" Canvas.Top="30" IsEnabled="False"/>
+                    <TextBox Name="tbName" Canvas.Left="90" Width="130" Canvas.Top="30" IsEnabled="False"
+                             Text="{Binding Path=StudentName, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvStudents, 
+                             Path=SelectedItem}"/>
 
                     <Label Content="Phone" Canvas.Top="55"/>
-                    <TextBox Canvas.Left="90" Width="130" Canvas.Top="60" IsEnabled="False"/>
+                    <TextBox Name="tbPhone" Canvas.Left="90" Width="130" Canvas.Top="60" IsEnabled="False"
+                             Text="{Binding Path=Phone, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvStudents, 
+                             Path=SelectedItem}"/>
 
                     <Label Content="DOB" Canvas.Top="85"/>
-                    <TextBox Canvas.Left="90" Width="130" Canvas.Top="90" IsEnabled="False"/>
+                    <TextBox Name="tbDOB" Canvas.Left="90" Width="130" Canvas.Top="90" IsEnabled="False"
+                             Text="{Binding Path=Dob, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvStudents, 
+                             Path=SelectedItem}"/>
 
                     <Label Content="Address" Canvas.Top="115"/>
-                    <TextBox Canvas.Left="90" Width="130" Canvas.Top="120" IsEnabled="False"/>
+                    <TextBox Name="tbAddress" Canvas.Left="90" Width="130" Canvas.Top="120" IsEnabled="False"
+                             Text="{Binding Path=Address, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvStudents, 
+                             Path=SelectedItem}"/>
 
                 </Canvas>
             </GroupBox>

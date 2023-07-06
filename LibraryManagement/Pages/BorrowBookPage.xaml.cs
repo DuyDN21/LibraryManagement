@@ -49,5 +49,13 @@ namespace LibraryManagement.Pages
             }
             lvBorrows.ItemsSource = books.ToList();
         }
+
+        private void btn_RefreshClick(object sender, RoutedEventArgs e)
+        {
+            rd_bookid.IsChecked = false;
+            rd_studentid.IsChecked = false;
+            searchText.Text = "";
+            lvBorrows.ItemsSource = borrowBookRepository.GetBorrowList();
+        }
     }
 }

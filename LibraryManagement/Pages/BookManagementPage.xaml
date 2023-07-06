@@ -87,27 +87,48 @@
             <GroupBox Header="INFORMATION" Grid.Column="3" Margin="5,0">
                 <Canvas>
                     <Label Content="Book ID"/>
-                    <TextBox Canvas.Left="70" Width="130" Canvas.Top="5" Name="tb_BookId"/>
+                    <TextBox IsEnabled="False" Canvas.Left="70" Width="130" Canvas.Top="5" Name="tb_BookId"
+                             Text="{Binding Path=BookId, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBooks, 
+                             Path=SelectedItem}"/>
 
                     <Label Content="Book name" Canvas.Top="20"/>
-                    <TextBox Canvas.Left="70" Width="130" Canvas.Top="25" Name="tb_BookName"/>
+                    <TextBox IsEnabled="False" Canvas.Left="70" Width="130" Canvas.Top="25" Name="tb_BookName"
+                             Text="{Binding Path=BookName, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBooks, 
+                             Path=SelectedItem}"/>
 
                     
                     <Label Content="Category" Canvas.Top="40"/>
-                    <ComboBox Canvas.Left="70" Width="130" Canvas.Top="45" x:Name="cboCategory_edit">
-                    </ComboBox>
+                    <TextBox IsEnabled="False" Canvas.Left="70" Width="130" Canvas.Top="45" x:Name="tbCategory"
+                              Text="{Binding Path=Category.CategoryName, Mode=OneWay}" 
+                              
+                            DataContext="{Binding ElementName=lvBooks, 
+                             Path=SelectedItem}">
+                    </TextBox>
                     
 
                     <Label Content="Author" Canvas.Top="60"/>
-                    <ComboBox x:Name="cboAutor" Canvas.Left="70" Width="130" Canvas.Top="65">
-                    </ComboBox>
+                    <TextBox x:Name="tbAutor" Canvas.Left="70" Width="130" Canvas.Top="65" IsEnabled="False"
+                              Text="{Binding Path=Author.AuthorName, Mode=OneWay}" 
+                              
+                            DataContext="{Binding ElementName=lvBooks, 
+                             Path=SelectedItem}">
+                    </TextBox>
                     
                     <Label Content="Amount" Canvas.Top="80"/>
-                    <TextBox x:Name="tb_Amount" Canvas.Left="70" Width="130" Canvas.Top="85"/>
+                    <TextBox x:Name="tb_Amount" Canvas.Left="70" Width="130" Canvas.Top="85" IsEnabled="False"
+                             Text="{Binding Path=Amount, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvBooks, 
+                             Path=SelectedItem}"/>
                     
                     <Label Content="Publisher" Canvas.Top="100"/>
-                    <ComboBox x:Name="cboPublisher" Canvas.Left="70" Width="130" Canvas.Top="105">
-                    </ComboBox>
+                    <TextBox x:Name="tbPublisher" Canvas.Left="70" Width="130" Canvas.Top="105" IsEnabled="False"
+                              Text="{Binding Path=Publisher.PublisherName, Mode=OneWay}" 
+                              
+                            DataContext="{Binding ElementName=lvBooks, 
+                             Path=SelectedItem}">
+                    </TextBox>
                     
                     <Label Content="Available" Canvas.Top="120"/>
                     <TextBox Canvas.Left="70" Width="130" Canvas.Top="125" IsEnabled="False"/>

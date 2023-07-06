@@ -34,7 +34,7 @@ namespace LibraryManagement.Pages
 
         private void btn_AddClicked(object sender, RoutedEventArgs e)
         {
-            try
+/*            try
             {
                 Book b = GetBookObject();
                 bookRepository.InsertBook(b);
@@ -44,12 +44,12 @@ namespace LibraryManagement.Pages
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Insert fail");
-            }
+            }*/
         }
 
         private void btn_EditClicked(object sender, RoutedEventArgs e)
         {
-            try
+/*            try
             {
                 Book b = GetBookObject();
                 bookRepository.UpdateBook(b);
@@ -59,7 +59,7 @@ namespace LibraryManagement.Pages
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Insert fail");
-            }
+            }*/
         }
 
         private void btn_SearchClicked(object sender, RoutedEventArgs e)
@@ -106,13 +106,8 @@ namespace LibraryManagement.Pages
             sortName.IsChecked = false;
             search_author.Text = "";
             search_bookName.Text = "";
+            lvBooks.ItemsSource = bookRepository.GetBooks();
 
-            tb_Amount.Text="";
-            tb_BookId.Text = "";
-            tb_BookName.Text = "";
-            cboAutor.SelectedIndex = -1;
-            cboCategory_edit.SelectedIndex = -1;
-            cboPublisher.SelectedIndex = -1;
         }
 
 
@@ -124,22 +119,9 @@ namespace LibraryManagement.Pages
             cboCategory.DisplayMemberPath = "CategoryName";
             cboCategory.SelectedValuePath = "CategoryId";
 
-            cboCategory_edit.ItemsSource = categories.ToList();
-            cboCategory_edit.DisplayMemberPath = "CategoryName";
-            cboCategory_edit.SelectedValuePath = "CategoryId";
-
-            IQueryable<Author> authors = from s in myLibrary.Authors select s;
-            cboAutor.ItemsSource = authors.ToList();
-            cboAutor.DisplayMemberPath = "AuthorName";
-            cboAutor.SelectedValuePath = "AuthorId";
-
-            IQueryable<Publisher> publishers = from s in myLibrary.Publishers select s;
-            cboPublisher.ItemsSource = publishers.ToList();
-            cboPublisher.DisplayMemberPath = "PublisherName";
-            cboPublisher.SelectedValuePath = "PublisherId";
 
         }
-        private Book GetBookObject()
+/*        private Book GetBookObject()
         {
             Book b = null;
             try
@@ -159,6 +141,6 @@ namespace LibraryManagement.Pages
                 MessageBox.Show(ex.Message, "Get book");
             }
             return b;
-        }
+        }*/
     }
 }

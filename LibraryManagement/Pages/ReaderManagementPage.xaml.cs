@@ -43,6 +43,9 @@ namespace LibraryManagement.Pages
             sortDes.IsChecked = false;
             search_id.Text = "";
             search_name.Text = "";
+            lvStudents.ItemsSource = studentRepository.GetStudents();
+            lvBorrow.ItemsSource = "";
+
         }
 
         private void btn_SearchClicked(object sender, RoutedEventArgs e)
@@ -88,6 +91,15 @@ namespace LibraryManagement.Pages
                 }
             }
             lvStudents.ItemsSource = studentsIQ.ToList();
+        }
+
+        private void TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var myLibrary = new LibraryManagementContext();
+            IQueryable<BorrowBook> borrows = from s in myLibrary.BorrowBooks.Include(s=>s.Book) select s;
+            borrows = borrows.Where(s => s.StudentId
+                    .Contains(tbStudentId.Text));
+            lvBorrow.ItemsSource = borrows.ToList();
         }
     }
 }
