@@ -5,10 +5,89 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LibraryManagement.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="StatisticPage">
+      Title="StatisticPage" Height="465" Width="680">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="STATISTICS" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" Height="30" FontSize="18" FontWeight="Bold"/>
+
+        <GroupBox Grid.Row="1" Header="Book Statistic" Margin="5,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Canvas Grid.Column="0">
+                    <WrapPanel Orientation="Horizontal" Canvas.Top="15" Canvas.Left="30">
+                        <TextBlock Text="15" FontSize="20" FontWeight="ExtraBlack" Margin="5,15,10,0"/>
+                        <Image Source="/Images/book1.png" Width="50" Margin="5"/>
+                    </WrapPanel>
+                    <TextBlock Text="BOOKS" Canvas.Bottom="10" FontSize="15" FontWeight="ExtraBlack" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Grid.Column="1">
+                    <WrapPanel Orientation="Horizontal" Canvas.Top="15" Canvas.Left="30">
+                        <TextBlock Text="9" FontSize="20" FontWeight="ExtraBlack" Margin="5,15,10,0"/>
+                        <Image Source="/Images/book2.png" Width="50" Margin="5"/>
+                    </WrapPanel>
+                    <TextBlock Text="CATEGORIES" Canvas.Bottom="10" FontSize="15" FontWeight="ExtraBlack" Canvas.Left="40"/>
+                </Canvas>
+
+                <Canvas Grid.Column="2">
+                    <WrapPanel Orientation="Horizontal" Canvas.Top="15" Canvas.Left="30">
+                        <TextBlock Text="10" FontSize="20" FontWeight="ExtraBlack" Margin="5,15,10,0"/>
+                        <Image Source="/Images/author.png" Width="50" Margin="5"/>
+                    </WrapPanel>
+                    <TextBlock Text="AUTHORS" Canvas.Bottom="10" FontSize="15" FontWeight="ExtraBlack" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Grid.Column="3">
+                    <WrapPanel Orientation="Horizontal" Canvas.Top="15" Canvas.Left="30">
+                        <TextBlock Text="10" FontSize="20" FontWeight="ExtraBlack" Margin="5,15,10,0"/>
+                        <Image Source="/Images/publisher.png" Width="50" Margin="5"/>
+                    </WrapPanel>
+                    <TextBlock Text="PUBLISHERS" Canvas.Bottom="10" FontSize="15" FontWeight="ExtraBlack" Canvas.Left="40"/>
+                </Canvas>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Header="Borrow Statistic" Margin="5,0">
+            <WrapPanel>
+                <Grid Width="650" Margin="0,5,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Padding="5" Content="Borrowing" Background="Green" Foreground="White" FontSize="15" Width="100" Height="40" FontWeight="ExtraBold" BorderThickness="1" Grid.Column="0"/>
+                    <Button Padding="5" Content="Expired" Background="Green" Foreground="White" FontSize="15" Width="100" Height="40" FontWeight="ExtraBold" BorderThickness="1" Grid.Column="1"/>
+                </Grid>
+
+                <ListView Name="lvBorrows" Grid.Row="2">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Book ID" Width="50"/>
+                            <GridViewColumn Header="Book name" Width="150"/>
+                            <GridViewColumn Header="Student ID" Width="100"/>
+                            <GridViewColumn Header="Student name" Width="200"/>
+                            <GridViewColumn Header="Borrowed Date" Width="150"/>
+                            <GridViewColumn Header="Return Date" Width="150"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </WrapPanel>
+            
+
+
+
+        </GroupBox>
     </Grid>
 </Page>
