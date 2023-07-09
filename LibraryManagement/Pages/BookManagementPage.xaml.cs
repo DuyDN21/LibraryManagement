@@ -1,6 +1,7 @@
 ﻿using LibraryManagement.DataAccess;
 using LibraryManagement.IRepository;
 using LibraryManagement.Repository;
+using LibraryManagement.Windows;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -25,44 +26,46 @@ namespace LibraryManagement.Pages
     public partial class BookManagementPage : Page
     {
         IBookRepository bookRepository;
-        AddBookPage addBookPage;
+        AddBook addBookWindow;
+        EditBook editBookWindow;
+        
         public BookManagementPage()
         {
             InitializeComponent();
             bookRepository = new BookRepository();
             lvBooks.ItemsSource = bookRepository.GetBooks();
-
-            addBookPage = new AddBookPage();
         }
 
         private void btn_AddClicked(object sender, RoutedEventArgs e)
         {
-/*            try
-            {
-                Book b = GetBookObject();
-                bookRepository.InsertBook(b);
-                lvBooks.ItemsSource = bookRepository.GetBooks();
-                MessageBox.Show("Insert successful");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Insert fail");
-            }*/
+            addBookWindow = new AddBook();
+            addBookWindow.Show();
         }
 
         private void btn_EditClicked(object sender, RoutedEventArgs e)
         {
-/*            try
+            if(lvBooks.SelectedIndex == -1)
             {
-                Book b = GetBookObject();
-                bookRepository.UpdateBook(b);
-                lvBooks.ItemsSource = bookRepository.GetBooks();
-                MessageBox.Show("Insert successful");
+                MessageBox.Show("Choose a book first!");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Insert fail");
-            }*/
+                editBookWindow = new EditBook();
+                editBookWindow.book = (Book)lvBooks.SelectedItem;
+                editBookWindow.Show();
+            }
+
+            /*            try
+                        {
+                            Book b = GetBookObject();
+                            bookRepository.UpdateBook(b);
+                            lvBooks.ItemsSource = bookRepository.GetBooks();
+                            MessageBox.Show("Insert successful");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Insert fail");
+                        }*/
         }
 
         private void btn_SearchClicked(object sender, RoutedEventArgs e)

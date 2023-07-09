@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManagement.Windows"
-        mc:Ignorable="d"
-        Title="EditBook" Height="275" Width="320">
+        mc:Ignorable="d" Loaded="editBook_Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        Title="EditBook" Height="300" Width="320">
     <Grid Background="White">
         <Canvas Margin="10">
             <Label Content="Book ID:" Canvas.Top="5"/>
