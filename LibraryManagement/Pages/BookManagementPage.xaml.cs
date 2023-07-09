@@ -25,11 +25,14 @@ namespace LibraryManagement.Pages
     public partial class BookManagementPage : Page
     {
         IBookRepository bookRepository;
+        AddBookPage addBookPage;
         public BookManagementPage()
         {
             InitializeComponent();
             bookRepository = new BookRepository();
             lvBooks.ItemsSource = bookRepository.GetBooks();
+
+            addBookPage = new AddBookPage();
         }
 
         private void btn_AddClicked(object sender, RoutedEventArgs e)

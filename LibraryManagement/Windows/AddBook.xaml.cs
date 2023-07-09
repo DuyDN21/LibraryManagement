@@ -10,22 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LibraryManagement.Pages
+namespace LibraryManagement.Windows
 {
     /// <summary>
-    /// Interaction logic for EditBookPage.xaml
+    /// Interaction logic for AddBook.xaml
     /// </summary>
-    public partial class EditBookPage : Page
+    public partial class AddBook : Window
     {
-        public EditBookPage()
+        public AddBook()
         {
             InitializeComponent();
         }
 
-        private void btn_EditBook(object sender, RoutedEventArgs e)
+        private void btn_AddBook(object sender, RoutedEventArgs e)
         {
 
         }
