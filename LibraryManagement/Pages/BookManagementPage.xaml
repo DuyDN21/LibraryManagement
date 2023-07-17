@@ -43,8 +43,8 @@
                 <GroupBox Header="SORT" Grid.Row="1">
                     <Canvas>
                         <RadioButton Name="sortName" GroupName="sort_type1" Canvas.Top="5">Book name</RadioButton>
-                        <RadioButton Name="sortPrice" GroupName="sort_type1" Canvas.Top="25">Price</RadioButton>
-                        <RadioButton Name="sortAmount" GroupName="sort_type1" Canvas.Top="45">Amount</RadioButton>
+                        
+                        <RadioButton Name="sortAmount" GroupName="sort_type1" Canvas.Top="25">Amount</RadioButton>
 
                         <RadioButton Name="sortAsc" GroupName="sort_type2" Canvas.Top="5" Canvas.Right="5">A -> Z</RadioButton>
                         <RadioButton Name="sortDes" GroupName="sort_type2" Canvas.Top="25" Canvas.Right="5">Z -> A</RadioButton>
@@ -60,16 +60,9 @@
 
                 <GroupBox Header="FILTER" Grid.Row="0">
                     <Canvas>
-                        <WrapPanel>
-                            <Label Content="Price:"/>
-                            <TextBlock Text="From" VerticalAlignment="Center"/>
-                            <TextBox Width="60" Margin="2"/>
-                            <TextBlock Text="To" VerticalAlignment="Center"/>
-                            <TextBox Width="60" Margin="2"/>
-                        </WrapPanel>
 
-                        <Label Content="Category:" Canvas.Top="30"/>
-                        <ComboBox Canvas.Top="32" Canvas.Left="68" Width="130" x:Name="cboCategory">
+                        <Label Content="Category:" Canvas.Top="15"/>
+                        <ComboBox Canvas.Top="17" Canvas.Left="68" Width="130" x:Name="cboCategory">
 
                         </ComboBox>
                     </Canvas>
@@ -130,8 +123,7 @@
                              Path=SelectedItem}">
                     </TextBox>
                     
-                    <Label Content="Available" Canvas.Top="120"/>
-                    <TextBox Canvas.Left="70" Width="165" Canvas.Top="125" IsEnabled="False"/>
+                    
                     
                 </Canvas>
             </GroupBox>

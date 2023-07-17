@@ -11,7 +11,7 @@ namespace LibraryManagement.Repository
 {
     internal class BorrowBookRepository : IBorrowBookRepository
     {
-        public void DeleteBorrowBook(BorrowBook borrow)=> BorrowBookManagement.Instance.AddNew(borrow);
+        public void DeleteBorrowBook(BorrowBook borrow)=> BorrowBookManagement.Instance.Remove(borrow);
 
         public BorrowBook GetBorrowBook(string bookId, string studentId)=>BorrowBookManagement.Instance.GetBorrowBook(bookId, studentId);
 

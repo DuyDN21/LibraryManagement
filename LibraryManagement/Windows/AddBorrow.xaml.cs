@@ -59,6 +59,8 @@ namespace LibraryManagement.Windows
                     borrowBook.BorrowedDate = borrowDate.SelectedDate;
                     borrowBook.ReturnDate = returnDate.SelectedDate;
                     borrowBookRepository.InsertBorrowBook(borrowBook);
+                    book.Amount--;
+                    bookRepository.UpdateBook(book);
                     MessageBox.Show("Borrow successful!!");
                 }
                 

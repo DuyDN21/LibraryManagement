@@ -26,6 +26,7 @@ namespace LibraryManagement.Pages
     public partial class BorrowBookPage : Page
     {
         IBorrowBookRepository borrowBookRepository;
+        IBookRepository bookRepository;
         ExtendBorrow extendBorrow;
         AddBorrow addBorrow;
         public BorrowBookPage()
@@ -33,6 +34,7 @@ namespace LibraryManagement.Pages
             borrowBookRepository = new BorrowBookRepository();
             InitializeComponent();
             lvBorrows.ItemsSource = borrowBookRepository.GetBorrowList();
+            bookRepository = new BookRepository();
         }
 
         private void btn_SearchClicked(object sender, RoutedEventArgs e)
@@ -90,6 +92,11 @@ namespace LibraryManagement.Pages
                 else
                 {
                     borrowBookRepository.DeleteBorrowBook((BorrowBook)lvBorrows.SelectedItem);
+                    Book book = bookRepository.GetBookByID(tbBookId.Text.Trim());
+                    book.Amount++;
+                    bookRepository.UpdateBook(book);
+                    MessageBox.Show("Return book successfull!");
+                    lvBorrows.ItemsSource = borrowBookRepository.GetBorrowList();
                 }
             }
             catch (Exception ex)
