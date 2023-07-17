@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LibraryManagement.Pages"
       mc:Ignorable="d" 
-      Title="BookManagementPage" Height="465" Width="680"
+      Title="BookManagementPage" Height="465" Width="850"
       Loaded="Page_Loaded">
 
     <Grid Background="White">
@@ -87,20 +87,20 @@
             <GroupBox Header="INFORMATION" Grid.Column="3" Margin="5,0">
                 <Canvas>
                     <Label Content="Book ID"/>
-                    <TextBox IsEnabled="False" Canvas.Left="70" Width="130" Canvas.Top="5" Name="tb_BookId"
+                    <TextBox IsEnabled="False" Canvas.Left="70" Width="165" Canvas.Top="5" Name="tb_BookId"
                              Text="{Binding Path=BookId, Mode=OneWay}" 
                             DataContext="{Binding ElementName=lvBooks, 
                              Path=SelectedItem}"/>
 
                     <Label Content="Book name" Canvas.Top="20"/>
-                    <TextBox IsEnabled="False" Canvas.Left="70" Width="130" Canvas.Top="25" Name="tb_BookName"
+                    <TextBox IsEnabled="False" Canvas.Left="70" Width="165" Canvas.Top="25" Name="tb_BookName"
                              Text="{Binding Path=BookName, Mode=OneWay}" 
                             DataContext="{Binding ElementName=lvBooks, 
                              Path=SelectedItem}"/>
 
                     
                     <Label Content="Category" Canvas.Top="40"/>
-                    <TextBox IsEnabled="False" Canvas.Left="70" Width="130" Canvas.Top="45" x:Name="tbCategory"
+                    <TextBox IsEnabled="False" Canvas.Left="70" Width="165" Canvas.Top="45" x:Name="tbCategory"
                               Text="{Binding Path=Category.CategoryName, Mode=OneWay}" 
                               
                             DataContext="{Binding ElementName=lvBooks, 
@@ -109,7 +109,7 @@
                     
 
                     <Label Content="Author" Canvas.Top="60"/>
-                    <TextBox x:Name="tbAutor" Canvas.Left="70" Width="130" Canvas.Top="65" IsEnabled="False"
+                    <TextBox x:Name="tbAutor" Canvas.Left="70" Width="165" Canvas.Top="65" IsEnabled="False"
                               Text="{Binding Path=Author.AuthorName, Mode=OneWay}" 
                               
                             DataContext="{Binding ElementName=lvBooks, 
@@ -117,13 +117,13 @@
                     </TextBox>
                     
                     <Label Content="Amount" Canvas.Top="80"/>
-                    <TextBox x:Name="tb_Amount" Canvas.Left="70" Width="130" Canvas.Top="85" IsEnabled="False"
+                    <TextBox x:Name="tb_Amount" Canvas.Left="70" Width="165" Canvas.Top="85" IsEnabled="False"
                              Text="{Binding Path=Amount, Mode=OneWay}" 
                             DataContext="{Binding ElementName=lvBooks, 
                              Path=SelectedItem}"/>
                     
                     <Label Content="Publisher" Canvas.Top="100"/>
-                    <TextBox x:Name="tbPublisher" Canvas.Left="70" Width="130" Canvas.Top="105" IsEnabled="False"
+                    <TextBox x:Name="tbPublisher" Canvas.Left="70" Width="165" Canvas.Top="105" IsEnabled="False"
                               Text="{Binding Path=Publisher.PublisherName, Mode=OneWay}" 
                               
                             DataContext="{Binding ElementName=lvBooks, 
@@ -131,7 +131,7 @@
                     </TextBox>
                     
                     <Label Content="Available" Canvas.Top="120"/>
-                    <TextBox Canvas.Left="70" Width="130" Canvas.Top="125" IsEnabled="False"/>
+                    <TextBox Canvas.Left="70" Width="165" Canvas.Top="125" IsEnabled="False"/>
                     
                 </Canvas>
             </GroupBox>

@@ -1,6 +1,7 @@
 ﻿using LibraryManagement.DataAccess;
 using LibraryManagement.IRepository;
 using LibraryManagement.Repository;
+using LibraryManagement.Windows;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,8 @@ namespace LibraryManagement.Pages
     public partial class BorrowBookPage : Page
     {
         IBorrowBookRepository borrowBookRepository;
+        ExtendBorrow extendBorrow;
+        AddBorrow addBorrow;
         public BorrowBookPage()
         {
             borrowBookRepository = new BorrowBookRepository();
@@ -56,6 +59,43 @@ namespace LibraryManagement.Pages
             rd_studentid.IsChecked = false;
             searchText.Text = "";
             lvBorrows.ItemsSource = borrowBookRepository.GetBorrowList();
+        }
+
+        private void btn_BorrowClicked(object sender, RoutedEventArgs e)
+        {
+            addBorrow = new AddBorrow();
+            addBorrow.Show();
+        }
+        private void btn_ExtendClicked(object sender, RoutedEventArgs e)
+        {
+            if(lvBorrows.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please choose first!");
+            }
+            else
+            {
+                extendBorrow = new ExtendBorrow();
+                extendBorrow.borrowBook = (BorrowBook)lvBorrows.SelectedItem;
+                extendBorrow.Show();
+            }
+        }
+        private void btn_ReturnClicked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (lvBorrows.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Please choose first!");
+                }
+                else
+                {
+                    borrowBookRepository.DeleteBorrowBook((BorrowBook)lvBorrows.SelectedItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Return book");
+            }
         }
     }
 }

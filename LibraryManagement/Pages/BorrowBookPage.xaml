@@ -134,9 +134,9 @@
                             DataContext="{Binding ElementName=lvBorrows, 
                              Path=SelectedItem}"/>
 
-                        <Button Content="Borrow" Canvas.Bottom="12" Canvas.Right="250" Padding="5" Width="50"/>
-                        <Button Content="Extend" Canvas.Bottom="12" Canvas.Right="180" Padding="5" Width="50"/>
-                        <Button Content="Return" Canvas.Bottom="12" Canvas.Right="110" Padding="5" Width="50"/>
+                        <Button Content="Borrow" Canvas.Bottom="12" Canvas.Right="250" Padding="5" Width="50" Click="btn_BorrowClicked"/>
+                        <Button Content="Extend" Canvas.Bottom="12" Canvas.Right="180" Padding="5" Width="50" Click="btn_ExtendClicked"/>
+                        <Button Content="Return" Canvas.Bottom="12" Canvas.Right="110" Padding="5" Width="50" Click="btn_ReturnClicked"/>
                         <Button Content="Refresh" Canvas.Bottom="12" Canvas.Right="40" Padding="5" Width="50" Click="btn_RefreshClick"/>
                     </Canvas>
                 </GroupBox>
