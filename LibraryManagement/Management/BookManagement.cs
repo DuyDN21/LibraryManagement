@@ -99,5 +99,28 @@ namespace LibraryManagement.Management
                 throw new Exception(ex.Message);
             }
         }
+
+        public void Delete(Book book)
+        {
+            try
+            {
+                Book b = GetBookByID(book.BookId);
+                if (b != null)
+                {
+                    var myLibrary = new LibraryManagementContext();
+                    myLibrary.Books.Remove(book);
+                    myLibrary.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("The Book does not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -73,6 +73,7 @@
                     <Button Content="EDIT" FontWeight="DemiBold" Width="90" Height="25" Canvas.Right="10" Canvas.Top="15" Click="btn_EditClicked"/>
                     <Button Content="REFRESH" FontWeight="DemiBold" Width="90" Height="25" Canvas.Top="55" Canvas.Right="10" Click="btn_RefreshClicked"/>
                     <Button Content="SEARCH" FontWeight="DemiBold" Width="90" Height="25" Canvas.Top="55" Canvas.Left="10" Click="btn_SearchClicked"/>
+                    <Button Name="btnDelete" Content="DELETE" FontWeight="DemiBold" Width="60" Height="25" Canvas.Top="35" Canvas.Left="108" Click="btn_DeleteClicked" IsEnabled="False"/>
                 </Canvas>
 
             </Grid>
@@ -130,7 +131,7 @@
 
         </Grid>
 
-        <ListView Name="lvBooks" Grid.Row="2" Margin="0,5,0,0">
+        <ListView Name="lvBooks" Grid.Row="2" Margin="0,5,0,0" SelectionChanged="lvSelectionChange">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Book ID" Width="50"

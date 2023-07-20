@@ -26,6 +26,7 @@ namespace LibraryManagement.Pages
     public partial class BookManagementPage : Page
     {
         IBookRepository bookRepository;
+        IBorrowBookRepository borrowBookRepository;
         AddBook addBookWindow;
         EditBook editBookWindow;
         
@@ -33,6 +34,7 @@ namespace LibraryManagement.Pages
         {
             InitializeComponent();
             bookRepository = new BookRepository();
+            borrowBookRepository = new BorrowBookRepository();
             lvBooks.ItemsSource = bookRepository.GetBooks();
         }
 
@@ -113,7 +115,7 @@ namespace LibraryManagement.Pages
             search_author.Text = "";
             search_bookName.Text = "";
             lvBooks.ItemsSource = bookRepository.GetBooks();
-
+            btnDelete.IsEnabled = false;
         }
 
 
@@ -127,26 +129,72 @@ namespace LibraryManagement.Pages
 
 
         }
-/*        private Book GetBookObject()
+
+        private void btn_DeleteClicked(object sender, RoutedEventArgs e)
         {
-            Book b = null;
-            try
+            if (lvBooks.SelectedIndex == -1)
             {
-                b = new Book
+                MessageBox.Show("Choose a book first!");
+            }
+            else
+            {
+                try
                 {
-                    BookId = tb_BookId.Text,
-                    BookName = tb_BookName.Text,
-                    Amount = Int32.Parse(tb_Amount.Text),
-                    CategoryId = Int32.Parse(cboCategory_edit.SelectedValue.ToString()),
-                    AuthorId = cboAutor.SelectedValue.ToString(),
-                    PublisherId = cboPublisher.SelectedValue.ToString()
-                };
+                    Book b = (Book)lvBooks.SelectedItem;
+                    var myLibrary = new LibraryManagementContext();
+                    myLibrary.Books.Remove(b);
+                    myLibrary.SaveChanges();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Delete");
+                }
             }
-            catch (Exception ex)
+        }
+
+        private void lvSelectionChange(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvBooks.SelectedIndex == -1)
             {
-                MessageBox.Show(ex.Message, "Get book");
             }
-            return b;
-        }*/
+            else
+            {
+                Book b = (Book)lvBooks.SelectedItem;
+                var myLibrary = new LibraryManagementContext();
+                IQueryable<BorrowBook> borrows = from s in myLibrary.BorrowBooks.Include(s => s.Book) select s;
+                borrows = borrows.Where(s => s.BookId == b.BookId);
+                if (borrows.ToList().Count() == 0)
+                {
+                    btnDelete.IsEnabled = true;
+                }
+                else
+                {
+                    btnDelete.IsEnabled = false;
+                }
+            }
+            
+        }
+
+        /*        private Book GetBookObject()
+                {
+                    Book b = null;
+                    try
+                    {
+                        b = new Book
+                        {
+                            BookId = tb_BookId.Text,
+                            BookName = tb_BookName.Text,
+                            Amount = Int32.Parse(tb_Amount.Text),
+                            CategoryId = Int32.Parse(cboCategory_edit.SelectedValue.ToString()),
+                            AuthorId = cboAutor.SelectedValue.ToString(),
+                            PublisherId = cboPublisher.SelectedValue.ToString()
+                        };
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Get book");
+                    }
+                    return b;
+                }*/
     }
 }
